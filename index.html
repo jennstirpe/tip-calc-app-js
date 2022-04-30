@@ -49,7 +49,7 @@
                 <input class="tip-input" type="radio" name="tip" id="tip-50" value="50" placeholder="50">
                 <label class="tip-label" for="tip-50">50%</label>
               
-                <input id="custom-tip" type="number" name="tip" placeholder="Custom">
+                <input id="custom-tip" class="tip-label" type="number" name="tip" placeholder="Custom">
               
             </div>
           </div>
@@ -64,41 +64,30 @@
       </section>
 
 
-
       <section class="calculations">
 
         <div class="calc">
-
           <div class="calc-label">
             <p>Tip Amount</p>
             <span>/person</span>
           </div>
-
           <h3>$<span id="tip-split">0.00</span></h3>
-
         </div>
 
 
         <div class="calc">
-
           <div class="calc-label">
             <p>Total Amount</p>
             <span>/person</span>
           </div>
-
           <h3>$<span id="total-split">0.00</span></h3>
-
         </div>
 
-        <button class="resetBtn">Reset</button>
+        <button class="resetBtn" id="reset">Reset</button>
 
       </section>
 
-
     </main>
-  
-  
-  
   
   </div>
   
@@ -107,5 +96,8 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">J Stirpe</a>.
   </div>
+
+
+  <script src="index.js"></script>
 </body>
 </html>

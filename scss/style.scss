@@ -96,6 +96,7 @@ body {
                 display: none;
             }
 
+
             .tip-label {
                 background-color: $very-dark-cyan;
                 color: $very-light-grayish-cyan;
@@ -111,6 +112,11 @@ body {
                     background-color: $light-blue;
                     color: $very-dark-cyan;
                 }
+            }
+
+            .selected-tip {
+                background-color: $strong-cyan;
+                color: $very-dark-cyan;
             }
 
             #custom-tip {
@@ -226,7 +232,7 @@ body {
             
             .tip-input {
                 margin: 2.5rem 0;
-                
+
                 .tip-selections {
                     grid-template-columns: repeat(3, 1fr);
                     
