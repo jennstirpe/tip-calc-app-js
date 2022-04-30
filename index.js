@@ -24,7 +24,6 @@ let totalSplit = 0;
 
 
 
-
 // HANDLING USER INPUT
 billAmtInput.addEventListener("input", () => {
     bill = billAmtInput.value;
@@ -48,10 +47,13 @@ peopleAmtInput.addEventListener("input", () => {
 
 tipBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
+
+        // Toggle so only most currently selected has active style
         tipBtns.forEach((btn) => {
             btn.classList.remove("selected-tip");    
         })
         btn.classList.add("selected-tip");
+
         tip = btn.previousElementSibling.value / 100;
 
         calcTipSplit()
@@ -76,42 +78,52 @@ customTipInput.addEventListener("input", () => {
 
 
 // CALCULATIONS
+
 function calcTipSplit() {
-    tipSplit = (bill * tip) / people;
+    if(bill && tip && people) {
+        tipSplit = (bill * tip) / people;
+    }
 
     if(tipSplit) {
         tipSplitDisplay.innerHTML = tipSplit.toFixed(2);
     }
 }
 
-function calcTotalSplit() {
-    totalSplit = (bill * (1 + tip)) / people;
 
+function calcTotalSplit() {
+    if(bill && tip && people) {
+        totalSplit = (bill * (1 + tip)) / people;
+    }
+    
     if(totalSplit) {
         totalSplitDisplay.innerHTML = totalSplit.toFixed(2);
     }
 }
 
+
 function resetForm() {
     if(resetBtn.classList.contains("btn-active")) {
+
+        // Only add click listener if the button is active
         resetBtn.addEventListener("click", () => {
+
             //reset form
             document.querySelector("form").reset();
 
-            // reset styles
+            // reset button styles
             tipBtns.forEach((btn) => {
                 btn.classList.remove("selected-tip");    
             })
 
             resetBtn.classList.remove("btn-active")
 
-            // clear stored info
-            if(bill) {
+            // clear any stored info
+            if(bill || tip || people || tipSplit || totalSplit) {
                 bill = "";
-            } else if (tip) {
                 tip = "";
-            } else if (people) {
                 people = "";
+                tipSplit = 0;
+                totalSplit = 0;
             }
 
             tipSplitDisplay.innerHTML = "0.00";
