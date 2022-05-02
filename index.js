@@ -5,6 +5,7 @@ const tipBtns = document.querySelectorAll(".tip-label");
 const customTipInput = document.querySelector("#custom-tip");
 // number of people input
 const peopleAmtInput = document.querySelector("#ppl-amt");
+const errorText = document.querySelector(".error-text");
 
 // tip/person display
 const tipSplitDisplay = document.querySelector("#tip-split");
@@ -33,6 +34,15 @@ billAmtInput.addEventListener("input", () => {
 
     resetBtn.classList.add("btn-active")
     resetForm()
+
+    console.log(bill)
+
+    if (bill == 0) {
+        console.log("ZERO")
+        tipSplitDisplay.innerHTML = "0.00";
+        totalSplitDisplay.innerHTML = "0.00";
+    }
+
 })
 
 peopleAmtInput.addEventListener("input", () => {
@@ -44,6 +54,20 @@ peopleAmtInput.addEventListener("input", () => {
     resetBtn.classList.add("btn-active")
     resetForm()
 })
+
+peopleAmtInput.addEventListener("blur", () => {
+    if(!people > 0) {
+        peopleAmtInput.classList.add("error");
+        errorText.style.visibility = "visible";
+    } else {
+        peopleAmtInput.classList.remove("error");
+        errorText.style.visibility = "hidden";
+    }
+})
+
+
+
+
 
 tipBtns.forEach((btn) => {
     btn.addEventListener("click", () => {

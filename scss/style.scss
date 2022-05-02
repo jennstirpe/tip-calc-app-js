@@ -73,6 +73,24 @@ body {
                 cursor: pointer;
                 border: 3px solid $light-blue;
             }
+
+            &:focus {
+                outline: none;
+                border: 3px solid $light-blue;
+            }
+        }
+
+        
+
+        .error-text {
+            visibility: hidden;
+            color: rgb(200, 115, 90);
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+        }
+        .error {
+            border: 3px solid rgb(200, 115, 90);
         }
     }
     
