@@ -35,10 +35,7 @@ billAmtInput.addEventListener("input", () => {
     resetBtn.classList.add("btn-active")
     resetForm()
 
-    console.log(bill)
-
     if (bill == 0) {
-        console.log("ZERO")
         tipSplitDisplay.innerHTML = "0.00";
         totalSplitDisplay.innerHTML = "0.00";
     }
