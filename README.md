@@ -12,6 +12,7 @@ HTML/Sass/JavaScript
 ## Contact
 
 Jennifer S. - stirpe.jennifer@gmail.com
+
 [Project link](https://jennstirpe.github.io/tip-calc-app-js/)
 
 ## Acknowledgements
