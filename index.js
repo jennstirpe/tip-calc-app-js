@@ -8,7 +8,9 @@ const peopleAmtInput = document.querySelector("#ppl-amt");
 const errorText = document.querySelector(".error-text");
 
 // tip/person display
-const tipSplitDisplay = document.querySelector("#tip-split");
+const tipDisplay = document.querySelector("#tip-total");
+// total bill (bill + tip) display
+const billTotalDisplay = document.querySelector("#billTotal");
 // total/person display
 const totalSplitDisplay = document.querySelector("#total-split");
 
@@ -20,7 +22,8 @@ let bill ;
 let tip ;
 let people ;
 
-let tipSplit = 0;
+let tipTotal = 0;
+let billTotal = 0;
 let totalSplit = 0;
 
 
@@ -29,14 +32,15 @@ let totalSplit = 0;
 billAmtInput.addEventListener("input", () => {
     bill = billAmtInput.value;
 
-    calcTipSplit()
+    calctipTotal()
+    calcBillTotal()
     calcTotalSplit()
 
     resetBtn.classList.add("btn-active")
     resetForm()
 
     if (bill == 0) {
-        tipSplitDisplay.innerHTML = "0.00";
+        tipDisplay.innerHTML = "0.00";
         totalSplitDisplay.innerHTML = "0.00";
     }
 
@@ -45,7 +49,8 @@ billAmtInput.addEventListener("input", () => {
 peopleAmtInput.addEventListener("input", () => {
     people = peopleAmtInput.value;
 
-    calcTipSplit()
+    calctipTotal()
+    calcBillTotal()
     calcTotalSplit()
 
     resetBtn.classList.add("btn-active")
@@ -77,7 +82,8 @@ tipBtns.forEach((btn) => {
 
         tip = btn.previousElementSibling.value / 100;
 
-        calcTipSplit()
+        calctipTotal()
+        calcBillTotal()
         calcTotalSplit()
 
         resetBtn.classList.add("btn-active")
@@ -91,7 +97,8 @@ customTipInput.addEventListener("input", () => {
     })
     tip = customTipInput.value / 100;
 
-    calcTipSplit()
+    calctipTotal()
+    calcBillTotal()
     calcTotalSplit()
 })
 
@@ -100,16 +107,25 @@ customTipInput.addEventListener("input", () => {
 
 // CALCULATIONS
 
-function calcTipSplit() {
+function calctipTotal() {
     if(bill && tip && people) {
-        tipSplit = (bill * tip) / people;
+        tipTotal = (bill * tip) / people;
     }
 
-    if(tipSplit) {
-        tipSplitDisplay.innerHTML = tipSplit.toFixed(2);
+    if(tipTotal) {
+        tipDisplay.innerHTML = tipTotal.toFixed(2);
     }
 }
 
+function calcBillTotal() {
+    if(bill && tip && people) {
+        billTotal = (bill * (1 + tip));
+    }
+    
+    if(billTotal) {
+        billTotalDisplay.innerHTML = billTotal.toFixed(2);
+    }
+}
 
 function calcTotalSplit() {
     if(bill && tip && people) {
@@ -144,10 +160,12 @@ function resetForm() {
                 tip = "";
                 people = "";
                 tipSplit = 0;
+                billTotal = 0;
                 totalSplit = 0;
             }
 
-            tipSplitDisplay.innerHTML = "0.00";
+            tipDisplay.innerHTML = "0.00";
+            billTotalDisplay.innerHTML = "0.00";
             totalSplitDisplay.innerHTML = "0.00";
         })
     }
