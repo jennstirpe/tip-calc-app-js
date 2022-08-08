@@ -1,18 +1,21 @@
-$strong-cyan: rgb(38, 192, 171);
-$light-blue: rgb(157, 232, 223);
-$very-dark-cyan: rgb(0, 73, 77);
-$dark-grayish-cyan: rgb(94, 122, 125);
-$resetBtn: rgb(6, 104, 109);
+
+$totals: #dae3e5;
+$btn-hover: #c7eae4;
+$output-bg: #0d1f2d;
+$input-header: rgb(94, 122, 125);
+$resetBtn: #546a7b;
+$resetBtnDisabledText: rgb(8, 49, 51);
 $grayish-cyan: rgb(127, 156, 159);
-$light-grayish-cyan: rgb(197, 228, 231);
-$very-light-grayish-cyan: rgb(244, 250, 250);
-$white: rgb(255, 255, 255);
+$main-bg: #bbd1ea;
+$input-bg: rgb(244, 250, 250);
+$card-bg: rgb(255, 255, 255);
+$error: rgb(200, 115, 90);
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Space Mono', monospace;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -21,20 +24,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $light-grayish-cyan;
+    background-color: $main-bg;
 }
 
 .container {
     margin-top: 4rem;
     text-align: center;
+
+    h1 {
+        font-family: 'Bebas Neue', cursive;
+        font-size:3.5rem;
+    }
 }
 
 
 .calculator {
     width: 23rem;
     margin-top: 2rem;
-    background: $white;
-    border-radius: 1rem;
+    background: $card-bg;
+    border-radius: .75rem;
     padding: 1.5rem;
     text-align: left;
 }
@@ -50,7 +58,7 @@ body {
         label {
             display: block;
             margin-bottom: .25rem;
-            color: $dark-grayish-cyan;
+            color: $input-header;
         }
 
         svg {
@@ -66,17 +74,17 @@ body {
             width: 100%;
             border-radius: .25rem;
             border: none;
-            background-color: $very-light-grayish-cyan;
-            color: $very-dark-cyan;
+            background-color: $input-bg;
+            color: $output-bg;
 
             &:hover {
                 cursor: pointer;
-                border: 3px solid $light-blue;
+                border: 3px solid $btn-hover;
             }
 
             &:focus {
                 outline: none;
-                border: 3px solid $light-blue;
+                border: 3px solid $btn-hover;
             }
         }
 
@@ -84,13 +92,13 @@ body {
 
         .error-text {
             visibility: hidden;
-            color: rgb(200, 115, 90);
+            color: $error;
             position: absolute;
             top: 0rem;
             right: 0rem;
         }
         .error {
-            border: 3px solid rgb(200, 115, 90);
+            border: 3px solid $error;
         }
     }
     
@@ -100,7 +108,7 @@ body {
         .tip-section-label {
             display: block;
             margin-bottom: .75rem;
-            color: $dark-grayish-cyan;
+            color: $input-header;
             font-size: 1rem;
         }
 
@@ -114,8 +122,8 @@ body {
             }
 
             .tip-label {
-                background-color: $very-dark-cyan;
-                color: $very-light-grayish-cyan;
+                background-color: $output-bg;
+                color: $input-bg;
                 font-size: 1.5rem;
                 text-align: center;               
                 border-radius: .35rem;
@@ -125,14 +133,14 @@ body {
 
                 &:hover {
                     cursor: pointer;
-                    background-color: $light-blue;
-                    color: $very-dark-cyan;
+                    background-color: $btn-hover;
+                    color: $output-bg;
                 }
             }
 
             .selected-tip {
-                background-color: $strong-cyan;
-                color: $very-dark-cyan;
+                background-color: $totals;
+                color: $output-bg;
             }
 
             #custom-tip {
@@ -142,16 +150,16 @@ body {
                 font-size: 1.5rem;
                 height: 3rem;
                 text-align: right;
-                background-color: $very-light-grayish-cyan;
-                color: $very-dark-cyan;
+                background-color: $input-bg;
+                color: $output-bg;
 
                 &::placeholder {
-                    color: $dark-grayish-cyan;
+                    color: $input-header;
                 }
             
                 &:hover {
                     cursor: pointer;
-                    border: 3px solid $light-blue;
+                    border: 3px solid $btn-hover;
                 }
             }
         }
@@ -160,8 +168,8 @@ body {
 
 
 .calculations {
-    background-color: $very-dark-cyan;
-    border-radius: 1rem;
+    background-color: $output-bg;
+    border-radius: .75rem;
     padding: 1.5rem;
 
     .calc {
@@ -172,7 +180,7 @@ body {
 
         .calc-label {
             p {
-                color: $light-grayish-cyan;
+                color: $main-bg;
             }
 
             span {
@@ -182,7 +190,7 @@ body {
         }
         
         h3 {
-            color: $strong-cyan;
+            color: $totals;
             font-size: 1.75rem;
         }
     }
@@ -190,23 +198,24 @@ body {
 
     // RESET BUTTON ACTIVE CLASS
     .btn-active {
-        background-color: $strong-cyan !important;
-        color: $very-dark-cyan !important;
+        background-color: $totals !important;
+        color: $output-bg !important;
 
         transition: all 250ms linear;
 
         &:hover {
             cursor: pointer;
-            background-color: $light-blue !important;
+            background-color: $btn-hover !important;
         }
     }
 
     .resetBtn {
+        font-family: 'Bebas Neue', cursive;
         background-color: $resetBtn;
-        color: rgb(0, 95,100);
+        color: $resetBtnDisabledText;
         border: none;
         border-radius: .25rem;
-        font-size: 1.15rem;
+        font-size: 1.5rem;
         text-transform: uppercase;
         width: 100%;
         height: 2.5rem;
@@ -272,17 +281,3 @@ body {
     }
 }
 
-
-
-
-
-
-
-.attribution { 
-    font-size: 11px; text-align: center; 
-
-    a { 
-        color: hsl(228, 45%, 44%); 
-    }
-
-}
