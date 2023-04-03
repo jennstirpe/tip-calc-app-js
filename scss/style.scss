@@ -2,6 +2,7 @@ $error: rgb(200, 115, 90);
 $accent: #c7c8e6;
 $accent-hover: #d5d6f0;
 $accent-text: #9899ae;
+$input-text: #686a99;
 
 * {
     box-sizing: border-box;
@@ -12,33 +13,22 @@ $accent-text: #9899ae;
 
 body {
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: $accent;
     color: #727288;
-}
-
-
-.container {
-    margin-top: 4rem;
-    text-align: center;
-    border-radius: 10px;
-    background: #c7c8e6;
-    box-shadow:  8px 8px 21px #b5b6d1,
-                -8px -8px 21px #d9dafb;
-
-    h1 {
-        font-family: 'Bebas Neue', cursive;
-        font-size:3.5rem;
-    }
+    position: relative;
 }
 
 header {
     h1 {
+        font-family: 'Bebas Neue', cursive;
         color: $accent;
-        font-size: 5rem; 
+        font-size: 13vw; 
+        letter-spacing: .75rem;
         font-weight: 700;
         text-shadow: -8px -8px 12px rgba(255,255,255,0.4),
                      8px 8px 12px rgba(0,0,0,0.08);
@@ -53,196 +43,209 @@ header {
     border-radius: .75rem;
     padding: 1.5rem;
     text-align: left;
-}
+    background: #c7c8e6;
+    box-shadow:  8px 8px 21px #b5b6d1,
+                -8px -8px 21px #d9dafb;
 
-.userInput {
+    .userInput {
 
-    .amount-input, .num-ppl-input {
-        position: relative;
-        margin-bottom: 1.75rem;
-
-        label {
-            display: block;
-            margin-bottom: .25rem;
-            color: $accent-text;
+        .amount-input, .num-ppl-input {
+            position: relative;
+            margin-bottom: 1.75rem;
+                
+            label {
+                display: block;
+                margin-bottom: .25rem;
+                color: $accent-text;
+            }
+                
+            svg {
+                position: absolute;
+                top: 2.75rem;
+                left: .75rem;
+            }
+                
+            input {
+                text-align: right;
+                font-size: 1.6rem;
+                height: 3rem;
+                width: 100%;
+                border: none;
+                padding: 0 1rem;
+                border-radius: 3px;
+                background: #c7c8e6;
+                box-shadow: inset 8px 8px 13px #abacc6,
+                            inset -8px -8px 13px #e3e4ff;
+                color: $input-text;
+    
+                &:hover {
+                    cursor: pointer;
+                    border: 1px solid $accent-hover;
+                }
+                
+                &:focus {
+                    outline: none;
+                    border: 3px solid $accent-hover;
+                }
+            }
+                
+            .error-text {
+                visibility: hidden;
+                color: $error;
+                position: absolute;
+                top: 0rem;
+                right: 0rem;
+            }
+            .error {
+                border: 3px solid $error;
+            }
         }
-
-        svg {
-            position: absolute;
-            top: 2.75rem;
-            left: .75rem;
+                    
+        .tip-input {
+            margin-bottom: 1.75rem;
+                
+            .tip-section-label {
+                display: block;
+                margin-bottom: .75rem;
+                font-size: 1rem;
+                color: $accent-text;
+            }
+                
+            .tip-selections {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                
+                .tip-input {
+                    display: none;
+                }
+                
+                .tip-label {
+                    font-size: 1.5rem;
+                    text-align: center;
+                    padding: .45rem 0;
+                    transition: all 200ms linear;
+                    border-radius: 10px;
+                    background: linear-gradient(145deg, #d5d6f6, #b3b4cf);
+                    box-shadow:  8px 8px 14px #afb0ca,
+                                -8px -8px 14px #dfe0ff;
+                
+                    &:hover {
+                        cursor: pointer;
+                        background: $accent-hover;
+                    }
+                }
+                
+                .selected-tip {
+                    background: #c7c8e6;
+                    box-shadow: inset 7px 7px 13px #adaec8,
+                                inset -7px -7px 13px #e1e2ff;
+                    
+                    &:hover {
+                        opacity: .75;
+                    }
+                }
+                
+                #custom-tip {
+                    max-width: 9.5rem;
+                    font-size: 1.5rem;
+                    padding-right: .75rem;
+                    height: 3rem;
+                    text-align: right;
+                    border: none;
+                    border-radius: 10px;
+                    background: #c7c8e6;
+                    box-shadow: inset 8px 8px 21px #b5b6d1,
+                                inset -8px -8px 21px #d9dafb;
+                    color: $input-text;
+                
+                    &::placeholder {
+                        color: $accent-text;  
+                    }
+                            
+                    &:hover {
+                        cursor: pointer;
+                        border: 2px solid $accent-hover;
+                    }
+                
+                    &:focus {
+                        outline: 2px solid $accent-hover;
+                    }
+                }
+            }
         }
-
-        input {
-            text-align: right;
-            font-size: 1.6rem;
-            height: 3rem;
-            width: 100%;
-            border: none;
-            padding: 0 1rem;
-            border-radius: 3px;
-            background: #c7c8e6;
-            box-shadow: inset 8px 8px 13px #abacc6,
-                        inset -8px -8px 13px #e3e4ff;
-
+    }
+                
+                
+    .calculations {
+        padding: 1.5rem;
+        border-radius: 19px;
+        background: #c7c8e6;
+        box-shadow: inset 8px 8px 14px #afb0ca,
+                    inset -8px -8px 14px #dfe0ff;
+                
+        .calc {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem 0;
+                
+            .calc-label {
+                p {
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                }
+                
+                span {
+                    font-size: .85rem;
+                    opacity: .75;
+                }
+            }
+                        
+            h3 {
+                font-size: 1.75rem;
+            }
+        }
+                
+                
+        // RESET BUTTON ACTIVE CLASS
+        .btn-active {
+            color: #727288 !important;
+            border-radius: 10px;
+            background: linear-gradient(145deg, #d5d6f6, #b3b4cf);
+            box-shadow:  8px 8px 14px #afb0ca,
+                        -8px -8px 14px #dfe0ff;
+            transition: all 250ms linear;
+                
             &:hover {
                 cursor: pointer;
-                border: 1px solid $accent-hover;
-            }
-
-            &:focus {
-                outline: none;
-                border: 3px solid $accent-hover;
+                background-color: $accent-hover !important;
             }
         }
-
-        .error-text {
-            visibility: hidden;
-            color: $error;
-            position: absolute;
-            top: 0rem;
-            right: 0rem;
-        }
-        .error {
-            border: 3px solid $error;
+                
+        #reset {
+            font-family: 'Bebas Neue', cursive;
+            border: 1px solid #72728825;
+            border-radius: .25rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            width: 100%;
+            height: 2.5rem;
+            margin-top: 1.5rem;
+            color: #72728825;
+            background: $accent;
         }
     }
-    
-    .tip-input {
-        margin-bottom: 1.75rem;
-
-        .tip-section-label {
-            display: block;
-            margin-bottom: .75rem;
-            font-size: 1rem;
-            color: $accent-text;
-        }
-
-        .tip-selections {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-
-            .tip-input {
-                display: none;
-            }
-
-            .tip-label {
-                font-size: 1.5rem;
-                text-align: center;
-                padding: .45rem 0;
-                transition: all 200ms linear;
-                border-radius: 10px;
-                background: linear-gradient(145deg, #d5d6f6, #b3b4cf);
-                box-shadow:  8px 8px 14px #afb0ca,
-                            -8px -8px 14px #dfe0ff;
-
-                &:hover {
-                    cursor: pointer;
-                    background: $accent-hover;
-                }
-            }
-
-            .selected-tip {
-                background: $accent-hover;
-            }
-
-            #custom-tip {
-                max-width: 9.5rem;
-                font-size: 1.5rem;
-                padding-right: .75rem;
-                height: 3rem;
-                text-align: right;
-                border: none;
-                border-radius: 10px;
-                background: #c7c8e6;
-                box-shadow: inset 8px 8px 21px #b5b6d1,
-                            inset -8px -8px 21px #d9dafb;
-
-                &::placeholder {
-                    color: $accent-text;  
-                }
-            
-                &:hover {
-                    cursor: pointer;
-                    border: 2px solid $accent-hover;
-                }
-
-                &:focus {
-                    outline: 2px solid $accent-hover;
-                }
-            }
-        }
+                
+    input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+         margin: 0; 
     }
 }
 
 
-.calculations {
-    padding: 1.5rem;
-    border-radius: 19px;
-    background: #c7c8e6;
-    box-shadow: inset 8px 8px 14px #afb0ca,
-                inset -8px -8px 14px #dfe0ff;
-
-    .calc {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: .5rem 0;
-
-        .calc-label {
-            p {
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                font-weight: 700;
-            }
-
-            span {
-                font-size: .85rem;
-                opacity: .75;
-            }
-        }
-        
-        h3 {
-            font-size: 1.75rem;
-        }
-    }
-
-
-    // RESET BUTTON ACTIVE CLASS
-    .btn-active {
-        color: #727288 !important;
-        border-radius: 10px;
-        background: linear-gradient(145deg, #d5d6f6, #b3b4cf);
-        box-shadow:  8px 8px 14px #afb0ca,
-                    -8px -8px 14px #dfe0ff;
-        transition: all 250ms linear;
-
-        &:hover {
-            cursor: pointer;
-            background-color: $accent-hover !important;
-        }
-    }
-
-    #reset {
-        font-family: 'Bebas Neue', cursive;
-        border: 1px solid #72728825;
-        border-radius: .25rem;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        width: 100%;
-        height: 2.5rem;
-        margin-top: 1.5rem;
-        color: #72728825;
-        background: $accent;
-    }
-}
-
-input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-     margin: 0; 
-}
 
 // RESPONSIVE STYLES
 
@@ -251,51 +254,47 @@ input[type=number]::-webkit-inner-spin-button,
         height: 100vh;
     }
 
-    .container {
-        margin-top: 0rem;
-    }
-
     .calculator {
         padding: 2rem;
         width: 55rem;
         height: 30rem;
         display: flex;
         justify-content: space-between;
-    }
 
-    .userInput {
-        width: 24rem;
-
-        form {
-            .tip-input {
-                margin: 2.5rem 0;
-
-                .tip-selections {
-                    grid-template-columns: repeat(3, 1fr);
-                    
-                    #custom-tip {
-                        max-width: 7rem;
+        .userInput {
+            width: 24rem;
+    
+            form {
+                .tip-input {
+                    margin: 2.5rem 0;
+    
+                    .tip-selections {
+                        grid-template-columns: repeat(3, 1fr);
+                        
+                        #custom-tip {
+                            max-width: 7rem;
+                        }
                     }
                 }
             }
         }
-    }
-
-    .calculations {
-        width: 24rem;
-        padding: 2.5rem;
-
-        .calc {
-            margin-bottom: .75rem;
-
-            h3 {
-                font-size: 2.5rem;
+    
+        .calculations {
+            width: 24rem;
+            padding: 2.5rem;
+    
+            .calc {
+                margin-bottom: .75rem;
+    
+                h3 {
+                    font-size: 2.5rem;
+                }
             }
-        }
-
-        .resetBtn {
-            height: 3rem;
-            margin-top: 4.25rem;
+    
+            .resetBtn {
+                height: 3rem;
+                margin-top: 4.25rem;
+            }
         }
     }
 }

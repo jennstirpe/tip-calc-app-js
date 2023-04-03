@@ -17,7 +17,6 @@ const totalSplitDisplay = document.querySelector("#total-split");
 // reset button
 const resetBtn = document.querySelector("#reset");
 
-
 let bill ;
 let tip ;
 let people ;
@@ -25,8 +24,6 @@ let people ;
 let tipTotal = 0;
 let billTotal = 0;
 let totalSplit = 0;
-
-
 
 // HANDLING USER INPUT
 billAmtInput.addEventListener("input", () => {
@@ -67,10 +64,6 @@ peopleAmtInput.addEventListener("blur", () => {
     }
 })
 
-
-
-
-
 tipBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
 
@@ -101,9 +94,6 @@ customTipInput.addEventListener("input", () => {
     calcBillTotal()
     calcTotalSplit()
 })
-
-
-
 
 // CALCULATIONS
 
@@ -136,7 +126,6 @@ function calcTotalSplit() {
         totalSplitDisplay.innerHTML = totalSplit.toFixed(2);
     }
 }
-
 
 function resetForm() {
     if(resetBtn.classList.contains("btn-active")) {

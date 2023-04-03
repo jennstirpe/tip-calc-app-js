@@ -9,6 +9,11 @@ A calculator that takes the bill amount, tip amount, and number of people splitt
 
 HTML/Sass/JavaScript
 
+### Recent Updates
+Updated styling
+Minor refactoring
+Removed unused code and files
+
 ## Contact
 
 Jennifer S. - stirpe.jennifer@gmail.com
